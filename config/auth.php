@@ -64,7 +64,9 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', User::class),
+           // 'model' => env('AUTH_MODEL', User::class),
+           // El modelo de usuario personalizado se establece en App\Models\Usuarios
+            'model' => App\Models\Usuarios::class,
         ],
 
         // 'users' => [

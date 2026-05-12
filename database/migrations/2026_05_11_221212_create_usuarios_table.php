@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Crear la tabla 'usuarios' con los campos necesarios
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            // El campo 'email' es único para evitar registros duplicados
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('rol', ['R', 'A'])->default('R');
+            $table->enum('rol', ['U', 'A'])->default('U'); // U para usuario, A para admin
             $table->timestamps();
         });
     }

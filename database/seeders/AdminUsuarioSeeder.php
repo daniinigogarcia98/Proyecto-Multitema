@@ -14,10 +14,12 @@ class AdminUsuarioSeeder extends Seeder
      */
     public function run(): void
     {
+        // Insertar un usuario administrador en la tabla 'usuarios'
             DB::table('usuarios')->insert([
             'nombre' => 'Administrador',
             'email' => 'admin@admin.com',
             'password' => Hash::make('admin123'),
+            // El campo 'rol' se establece como 'A' para indicar que es un administrador
             'rol' => 'A',
             'created_at' => now(),
             'updated_at' => now()

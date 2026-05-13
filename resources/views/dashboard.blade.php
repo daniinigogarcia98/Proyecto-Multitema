@@ -12,12 +12,17 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
 </head>
 <style>
-    .admin-profile img {
-        width: 40px;
-        height: 40px;
+    .avatar {
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #dee2e6;
+        background: #4f46e5;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 22px;
     }
 </style>
 
@@ -67,8 +72,9 @@
                                         {{ Auth::user()?->nombre }}
                                     </span>
                                     <!-- Avatar Placeholder -->
-                                    <img src="https://ui-avatars.com/api/?name=User&background=0D8ABC&color=fff"
-                                        alt="Admin Avatar">
+                                    <div class="avatar">
+                                        {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>

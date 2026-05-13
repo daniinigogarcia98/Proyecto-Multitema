@@ -99,7 +99,6 @@
                             con otros usuarios para resolver incidencias técnicas.
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="badge bg-primary">124 Temas Activos</span>
                             <button class="btn btn-outline-primary btn-sm">Gestionar Categoría</button>
                         </div>
                     </div>
@@ -118,7 +117,6 @@
                             compartir conocimientos generales y bricolaje.
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="badge bg-success">89 Temas Activos</span>
                             <button class="btn btn-outline-success btn-sm">Gestionar Categoría</button>
                         </div>
 

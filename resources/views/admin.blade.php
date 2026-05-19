@@ -40,6 +40,11 @@
                         <div class="d-flex align-items-center gap-3 w-100">
                             <!-- Grupo de Botones de Administración (Izquierda/Centro) -->
                             <div class="d-flex gap-3 flex-wrap">
+                                <button class="btn btn-primary btn-sm">
+                                    <i class="fas fa-users-cog"></i> Administrar Usuarios
+                                </button>
+
+
                                 <!-- TODOS -->
                                 <button class="btn btn-success btn-sm">
                                     <i class="fas fa-newspaper"></i> Administrar Publicaciones

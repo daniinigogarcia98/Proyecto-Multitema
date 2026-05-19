@@ -13,6 +13,10 @@ class LoginController
     {
         return view('login');
     }
+    public function cargarLoginAdmin()
+    {
+        return view('loginAdmin');
+    }
     public function cargarRegistro()
     {
         return view('registro');
@@ -26,11 +30,14 @@ class LoginController
             'password' => 'required'
         ]);
         // Si la validación es exitosa, se procede a intentar iniciar sesión
+        //vericar si es un  usuario normal o un admin
         try {
 
             if (Auth::attempt([
                 'email' => $res->email,
-                'password' => $res->password
+                'password' => $res->password,
+                'rol' => 'U' // Verificar que el rol sea de usuario normal
+                ,
             ])) {
                 // Regenerar la sesión para evitar ataques de fijación de sesión
                 $res->session()->regenerate();
@@ -39,6 +46,34 @@ class LoginController
             }
             // Si las credenciales son incorrectas, se redirige de vuelta con un mensaje de error
             return back()->with('mensaje', 'Datos incorrectos');
+            // En caso de cualquier otro error, se captura la excepción y se muestra un mensaje de error
+        } catch (\Throwable $th) {
+            return back()->with('mensaje', 'Error: ' . $th->getMessage());
+        }
+    }
+    public function loguearAdmin(Request $res)
+    {
+        // Validación de datos
+        // El campo 'email' se valida como un correo electrónico válido
+        $res->validate([
+            'email' => 'required|email:rfc,dns',
+            'password' => 'required'
+        ]);
+        // Si la validación es exitosa, se procede a intentar iniciar sesión
+        try {
+
+            if (Auth::attempt([
+                'email' => $res->email,
+                'password' => $res->password,
+                'rol' => 'A' // Verificar que el rol sea de administrador
+            ])) {
+                // Regenerar la sesión para evitar ataques de fijación de sesión
+                $res->session()->regenerate();
+                // Redirigir al dashboard después de iniciar sesión exitosamente
+                return redirect()->route('admin');
+            }
+            // Si las credenciales son incorrectas o el usuario no es administrador, se redirige de vuelta con un mensaje de error
+            return back()->with('mensaje', 'Datos incorrectos o no tienes permisos de administrador');
             // En caso de cualquier otro error, se captura la excepción y se muestra un mensaje de error
         } catch (\Throwable $th) {
             return back()->with('mensaje', 'Error: ' . $th->getMessage());

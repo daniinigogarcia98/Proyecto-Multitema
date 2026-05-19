@@ -1,0 +1,10 @@
+    /* Ajustes responsive adicionales */
+    @media (max-width: 767px) {
+        .card-icon-responsive {
+            font-size: 3rem !important;
+        }
+
+        .navbar-brand {
+            font-size: 1.1rem;
+        }
+    }

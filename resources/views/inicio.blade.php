@@ -12,19 +12,6 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
 </head>
 
-<style>
-    /* Ajustes responsive adicionales */
-    @media (max-width: 767px) {
-        .card-icon-responsive {
-            font-size: 3rem !important;
-        }
-
-        .navbar-brand {
-            font-size: 1.1rem;
-        }
-    }
-</style>
-
 <body class="bg-body-secondary overflow-x-hidden">
     <header>
         <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">

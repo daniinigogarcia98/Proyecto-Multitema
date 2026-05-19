@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="light">
 
 <head>
-    <title>ForoMultitema-Panel-De-Administración</title>
+    <title>ForoMultitema-Panel del Administrador</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,67 +10,57 @@
     <!-- Bootstrap CSS v5.3.8 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
 </head>
-<style>
-    .avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background: #4f46e5;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 22px;
-    }
-</style>
 
-<body class="bg-body-secondary overflow-hidden">
+<body class="bg-body-secondary overflow-x-hidden">
     <header>
         <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
-            <div class="container-fluid container-lg container-md container-sm">
+            <div class="container-fluid px-2 px-md-4">
                 <a class="navbar-brand" href="#"> <i class="fas fa-layer-group me-2"></i>ForoMultitema</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center gap-3 w-100">
-                            <!-- Grupo de Botones de Administración (Izquierda/Centro) -->
-                            <div class="d-flex gap-3 flex-wrap">
+                    <div class="container-fluid px-0">
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100">
+                            <!-- Grupo de Botones de Administración -->
+                            <div class="d-flex gap-2 flex-wrap justify-content-center justify-content-lg-start">
                                 <button class="btn btn-primary btn-sm">
-                                    <i class="fas fa-users-cog"></i> Administrar Usuarios
+                                    <i class="fas fa-users-cog"></i> <span class="d-none d-md-inline">Administrar
+                                        Usuarios</span>
                                 </button>
-
-
-                                <!-- TODOS -->
                                 <button class="btn btn-success btn-sm">
-                                    <i class="fas fa-newspaper"></i> Administrar Publicaciones
+                                    <i class="fas fa-newspaper"></i> <span class="d-none d-md-inline">Administrar
+                                        Publicaciones</span>
                                 </button>
-
                                 <button class="btn btn-warning btn-sm">
-                                    <i class="fas fa-envelope-open-text"></i> Bandeja de Mensajes
+                                    <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline">Bandeja
+                                        de Mensajes</span>
                                 </button>
                             </div>
 
                             <!-- Perfil y Cerrar Sesión (Derecha) -->
-                            <div class="ms-auto d-flex align-items-center gap-3">
-                                <form action="{{ route('cerrar') }}" method="post">
-                                    @csrf
-                                    <button class="btn btn-link nav-link text-danger">
-                                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
-                                    </button>
-                                </form>
-                                <div class="admin-profile d-flex align-items-center gap-2">
-                                    <span class="fw-bold text-white d-inline-block text-truncate"
-                                        style="max-width: 150px;">
-                                        {{ Auth::user()?->nombre }}
-                                    </span>
-                                    <!-- Avatar Placeholder -->
-                                    <div class="avatar">
-                                        {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                            <div
+                                class="ms-lg-auto d-flex align-items-center gap-2 gap-lg-3 justify-content-center justify-content-lg-end">
+                                <div class="ms-auto d-flex align-items-center gap-3">
+                                    <form action="{{ route('cerrar') }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-link nav-link text-danger">
+                                            <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                    <div class="user-profile d-flex align-items-center gap-2">
+                                        <span class="fw-bold text-white d-inline-block text-truncate"
+                                            style="max-width: 150px;">
+                                            {{ Auth::user()?->nombre }}
+                                        </span>
+                                        <!-- Avatar Placeholder -->
+                                        <div class="avatar">
+                                            {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -78,50 +68,60 @@
                     </div>
                 </div>
             </div>
-            </div>
         </nav>
     </header>
-    <main>
-        <div class="row row-cols-1 row-cols-md-3 g-4 py-5 pe-5 p-5 justify-content-center">
-            <div class="col">
-                <div class="card p-5 text-center h-100">
-                    <div class="card-img">
-                        <i class="fas fa-laptop-code" style="font-size: 4.5rem; margin-bottom: 20px;"></i>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Informática</h5>
-                        <p class="card-text">
-                            Espacio dedicado a soporte técnico especializado. Aquí podrás aportar tu granito de arena,
-                            buscar soluciones a problemas de código, configuraciones de sistemas operativos o contactar
-                            con otros usuarios para resolver incidencias técnicas.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <button class="btn btn-outline-primary btn-sm">Gestionar Categoría</button>
+
+    <main class="container-fluid px-0">
+        <div class="container px-3 px-md-4 px-lg-5 py-4 py-md-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 g-md-4 justify-content-center">
+
+                <!-- Card 1: Informática -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column p-3 p-md-4 p-lg-5 text-center">
+                            <div class="card-img mb-3">
+                                <i class="fas fa-laptop-code card-icon-responsive" style="font-size: 4.5rem;"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Informática</h5>
+                            <p class="card-text small flex-grow-1">
+                                Espacio dedicado a soporte técnico especializado. Aquí podrás aportar tu granito de
+                                arena, buscar soluciones a problemas de código, configuraciones de sistemas operativos o
+                                contactar con otros usuarios para resolver incidencias técnicas.
+                            </p>
+                            <div
+                                class="d-flex justify-content-between align-items-center mt-3 flex-wrap card-footer-responsive gap-2">
+                                <button class="btn btn-outline-primary btn-sm w-100 w-md-auto">
+                                    <i class="fas fa-cog me-1"></i> Gestionar Categoría
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col">
-                <div class="card p-5 text-center h-100">
-                    <div class="card-img">
-                        <i class="fas fa-tools" style="font-size: 4.5rem; margin-bottom: 20px;"></i>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="card-title">Temas Varios</h3>
-                        <p class="card-text">
-                            Soluciones prácticas para la vida cotidiana. Desde cómo cambiar una bombilla hasta
-                            tutoriales específicos como el cambio del sensor de aparcamiento de un BMW. Un lugar para
-                            compartir conocimientos generales y bricolaje.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <button class="btn btn-outline-success btn-sm">Gestionar Categoría</button>
-                        </div>
 
+                <!-- Card 2: Temas Varios -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column p-3 p-md-4 p-lg-5 text-center">
+                            <div class="card-img mb-3">
+                                <i class="fas fa-tools card-icon-responsive" style="font-size: 4.5rem;"></i>
+                            </div>
+                            <h3 class="card-title mb-3 h5">Temas Varios</h3>
+                            <p class="card-text small flex-grow-1">
+                                Soluciones prácticas para la vida cotidiana. Desde cómo cambiar una bombilla hasta
+                                tutoriales específicos como el cambio del sensor de aparcamiento de un BMW. Un lugar
+                                para compartir conocimientos generales y bricolaje.
+                            </p>
+                            <div
+                                class="d-flex justify-content-between align-items-center mt-3 flex-wrap card-footer-responsive gap-2">
+                                <button class="btn btn-outline-success btn-sm w-100 w-md-auto">
+                                    <i class="fas fa-cog me-1"></i> Gestionar Categoría
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-
         </div>
     </main>
 

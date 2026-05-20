@@ -24,6 +24,7 @@
                         </h2>
 
                         <form action="{{ route('registrar') }}" method="post">
+                            @csrf
                             <!-- Campo: Nombre completo -->
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre completo</label>
@@ -64,7 +65,7 @@
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="fas fa-lock"></i></span>
                                     <input type="password" class="form-control" id="confirmPassword"
-                                        name="confirmPassword" placeholder="Confirmar contraseña" required />
+                                        name="password_confirmation" placeholder="Confirmar contraseña" required />
                                     <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
                                         <i class="fas fa-eye"></i>
                                     </button>

@@ -66,6 +66,9 @@ return [
             'driver' => 'eloquent',
            // 'model' => env('AUTH_MODEL', User::class),
            // El modelo de usuario personalizado se establece en App\Models\Usuarios
+           // Esto indica que Laravel utilizará el modelo Usuarios para la autenticación en lugar del modelo User predeterminado
+           // Esto es importante para que Laravel sepa qué modelo utilizar al realizar operaciones de autenticación, como verificar credenciales o recuperar información del usuario
+           // y también para que pueda interactuar correctamente con la tabla 'usuarios' en la base de datos, que es donde se almacenan los datos de los usuarios
             'model' => App\Models\Usuarios::class,
         ],
 

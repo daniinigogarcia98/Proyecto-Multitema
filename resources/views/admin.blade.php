@@ -29,8 +29,12 @@
                             <!-- Grupo de Botones de Administración -->
                             <div class="d-flex gap-2 flex-wrap justify-content-center justify-content-lg-start">
                                 <button class="btn btn-primary btn-sm">
-                                    <i class="fas fa-users-cog"></i> <span class="d-none d-md-inline">Administrar
-                                        Usuarios</span>
+                                    <a href="{{ route('adminusuarios') }}" class="btn btn-primary btn-sm">
+                                        <i class="fas fa-users-cog"></i>
+                                        <span class="d-none d-md-inline">
+                                            Administrar Usuarios
+                                        </span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-success btn-sm">
                                     <i class="fas fa-newspaper"></i> <span class="d-none d-md-inline">Administrar

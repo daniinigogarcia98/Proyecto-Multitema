@@ -6,10 +6,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Usuarios extends Authenticatable
 {
+    // Especifica el nombre de la tabla en la base de datos que este modelo representa
+    // En este caso, se establece que el modelo Usuarios se corresponde con la tabla 'usuarios' en la base de datos
+    // Esto es importante para que Laravel sepa qué tabla utilizar al realizar consultas relacionadas con este modelo
     protected $table = 'usuarios';
 
     protected $fillable = [
-        // Campos que se pueden asignar masivamente
         'nombre',
         'email',
         'password',
@@ -17,7 +19,6 @@ class Usuarios extends Authenticatable
     ];
 
     protected $hidden = [
-        // Campos que se ocultan al convertir el modelo a un array o JSON
         'password'
     ];
 

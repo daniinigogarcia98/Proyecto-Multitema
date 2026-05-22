@@ -18,7 +18,7 @@ class AdminUsuarioSeeder extends Seeder
             DB::table('usuarios')->insert([
             'nombre' => 'Administrador',
             'email' => 'admin@admin.com',
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make('admin1234'),
             // El campo 'rol' se establece como 'A' para indicar que es un administrador
             'rol' => 'A',
             'created_at' => now(),

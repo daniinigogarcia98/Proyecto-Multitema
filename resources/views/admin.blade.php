@@ -37,6 +37,7 @@
                                     </a>
                                 </button>
                                 <button class="btn btn-success btn-sm">
+                                    <a href="{{ route('mispublicaciones') }}" class="btn btn-success btn-sm">
                                     <i class="fas fa-newspaper"></i> <span class="d-none d-md-inline">Administrar
                                         Publicaciones</span>
                                 </button>

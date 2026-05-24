@@ -29,8 +29,10 @@
                             <!-- Grupo de Botones de Administración -->
                             <div class="d-flex gap-2 flex-wrap justify-content-center justify-content-lg-start">
                                 <button class="btn btn-success btn-sm">
-                                    <i class="fas fa-newspaper"></i> <span class="d-none d-md-inline">Administrar
-                                        Publicaciones</span>
+                                    <a href="{{ route('mispublicaciones') }}" class="btn btn-success btn-sm">
+                                        <i class="fas fa-newspaper"></i>
+                                        <span class="d-none d-md-inline">Administar Publicaciones</span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-warning btn-sm">
                                     <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline">Bandeja
@@ -41,28 +43,28 @@
                             <!-- Perfil y Cerrar Sesión (Derecha) -->
                             <div
                                 class="ms-lg-auto d-flex align-items-center gap-2 gap-lg-3 justify-content-center justify-content-lg-end">
-                            <div class="ms-auto d-flex align-items-center gap-3">
-                                <form action="{{ route('cerrar') }}" method="post">
-                                    @csrf
-                                    <button class="btn btn-link nav-link text-danger">
-                                        <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
-                                    </button>
-                                </form>
-                                <div class="user-profile d-flex align-items-center gap-2">
-                                    <span class="fw-bold text-white d-inline-block text-truncate"
-                                        style="max-width: 150px;">
-                                        {{ Auth::user()?->nombre }}
-                                    </span>
-                                    <!-- Avatar Placeholder -->
-                                    <div class="avatar">
-                                        {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                                <div class="ms-auto d-flex align-items-center gap-3">
+                                    <form action="{{ route('cerrar') }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-link nav-link text-danger">
+                                            <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                    <div class="user-profile d-flex align-items-center gap-2">
+                                        <span class="fw-bold text-white d-inline-block text-truncate"
+                                            style="max-width: 150px;">
+                                            {{ Auth::user()?->nombre }}
+                                        </span>
+                                        <!-- Avatar Placeholder -->
+                                        <div class="avatar">
+                                            {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </nav>
     </header>
 
@@ -84,9 +86,10 @@
                                 contactar con otros usuarios para resolver incidencias técnicas.
                             </p>
                             <div class="mt-3">
-                                <button class="btn btn-outline-primary btn-sm w-100 w-md-auto">
+                                <a href="{{ route('categoriaver', 1) }}"
+                                    class="btn btn-outline-primary btn-sm w-100 w-md-auto">
                                     <i class="fas fa-eye me-1"></i>Ver
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -106,9 +109,10 @@
                                 para compartir conocimientos generales y bricolaje.
                             </p>
                             <div class="mt-3">
-                                <button class="btn btn-outline-success btn-sm w-100 w-md-auto">
+                                <a href="{{ route('categoriaver', 2) }}"
+                                    class="btn btn-outline-success btn-sm w-100 w-md-auto">
                                     <i class="fas fa-eye me-1"></i>Ver
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -55,7 +55,7 @@
                                 contactar con otros usuarios para resolver incidencias técnicas.
                             </p>
                             <div class="mt-3">
-                                <a href="" class="btn btn-outline-primary btn-sm w-100 w-md-auto">
+                                <a href="{{ route('categoriaver', 1) }}" class="btn btn-outline-primary btn-sm w-100 w-md-auto">
                                     <i class="fas fa-eye me-1"></i>Ver
                                 </a>
                             </div>
@@ -77,7 +77,7 @@
                                 para compartir conocimientos generales y bricolaje.
                             </p>
                             <div class="mt-3">
-                                <a href="" class="btn btn-outline-success btn-sm w-100 w-md-auto">
+                                <a href="{{ route('categoriaver', 2) }}" class="btn btn-outline-success btn-sm w-100 w-md-auto">
                                     <i class="fas fa-eye me-1"></i>Ver
                                 </a>
                             </div>

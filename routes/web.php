@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PublicacionController;
 use Illuminate\Support\Facades\Route;
 // Ruta principal
 Route::get('/', function () {
@@ -20,6 +21,18 @@ Route::middleware(['auth', 'usuario'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+});
+Route::controller(PublicacionController::class)->group(function () {
+
+    Route::get('/categoria/{id}','verCategoria')->name('categoriaver');
+    Route::get('/publicaciones/{id}/crear', 'formularioCrear')->name('formularioCrearPublicacion');
+    Route::post('/publicaciones', 'crearPublicacion')->name('crearPublicacion');
+    Route::put('/publicaciones/{id}', 'editarPublicacion')->name('editarPublicacion');
+    Route::delete('/publicaciones/{id}', 'eliminarPublicacion')->name('eliminarPublicacion');
+    Route::get('/publicacion/{id}', 'verPublicacion')->name('verPublicacion');
+    Route::get('/mispublicaciones', 'misPublicaciones')->name('mispublicaciones');
+
 });
 // Administrar usuarios
 // Las rutas para administrar usuarios están protegidas por el middleware 'admin'.

@@ -15,6 +15,8 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <!-- Estilos personalizados -->
+    <!-- El archivo admin.css contiene estilos personalizados para el panel de administración
+    permite mostrar un avatar del usuario  en este caso-->
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
 </head>
@@ -49,6 +51,7 @@
                             {{ Auth::user()?->nombre }}
                         </span>
                         <!-- Avatar Placeholder -->
+                        <!-- El avatar se muestra con las iniciales del usuario, obtenidas de su nombre -->
                         <div class="avatar">
                             {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
                         </div>
@@ -89,7 +92,7 @@
             <div class="card-header bg-primary text-white">
 
                 <h4 class="mb-0">
-                <i class="fas fa-users me-2"></i>
+                    <i class="fas fa-users me-2"></i>
                     Lista de Usuarios
 
                 </h4>
@@ -97,7 +100,7 @@
             </div>
 
             <div class="card-body table-responsive">
-
+                {{-- Lista de usuarios --}}
                 <table class="table table-hover align-middle">
 
                     <thead class="table-dark">
@@ -173,7 +176,7 @@
                                     {{-- pero si podemos eliminar otros usuarios --}}
                                     @if ($u->id != 1)
                                         <form action="{{ route('eliminarUsuario', $u->id) }}" method="POST">
-                                    {{-- para eliminar un usuario necesitamos el ID del usuario --}}
+                                            {{-- para eliminar un usuario necesitamos el ID del usuario --}}
                                             @csrf
                                             {{-- devido a que es un formulario de eliminación --}}
                                             {{-- laravel no puede el borrado como post necesitamos usar el metodo DELETE --}}
@@ -239,8 +242,7 @@
                                                     </label>
 
                                                     <input type="text" name="nombre" class="form-control"
-                                                    {{-- obtenemos el nombre del usuario de la base de datos --}}
-                                                        value="{{ $u->nombre }}" required>
+                                                        {{-- obtenemos el nombre del usuario de la base de datos --}} value="{{ $u->nombre }}" required>
 
                                                 </div>
 

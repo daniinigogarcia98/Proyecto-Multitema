@@ -8,21 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class PublicacionController extends Controller
 {
-    // NUEVO MÉTODO PARA MOSTRAR EL FORMULARIO DE CREACIÓN DE PUBLICACIONES
+    // metodo para crear publicaciones con un metodo llamado formularioCrearPublicacion que muestra el formulario
     public function formularioCrear($id)
 {
     $categoria = Categoria::findOrFail($id);
     return view('crear_publicacion', compact('categoria'));
 }
+// metodo para ver una categoria con sus publicaciones
     public function verCategoria($id)
     {
+        // Buscar la categoría por su ID utilizando el modelo Categoria
         $categoria = Categoria::findOrFail($id);
+        // Obtener las publicaciones asociadas a la categoría utilizando el modelo Publicacion
 
         $publicaciones = Publicacion::with('usuario')
             ->where('categoria_id', $id)
             ->latest()
             ->get();
-
+// Retornar la vista 'categoria' y pasarle las variables 'categoria' y 'publicaciones' que contienen la información de la categoría y sus publicaciones asociadas
         return view('categoria', compact('categoria', 'publicaciones'));
     }
 // NUEVO MÉTODO PARA CREAR PUBLICACIONES
@@ -69,6 +72,7 @@ class PublicacionController extends Controller
             ->with('error', 'No tienes permiso para eliminar esta publicación');
     }
 // NUEVO MÉTODO PARA EDITAR PUBLICACIONES
+// Este método permite editar una publicación específica, pero solo si el usuario autenticado es el autor de la publicación o tiene el rol de administrador. Si el usuario no tiene permiso para editar la publicación, se redirige de vuelta a la categoría con un mensaje de error.
     public function editarPublicacion(Request $request, $id)
     {
         $publicacion = Publicacion::findOrFail($id);

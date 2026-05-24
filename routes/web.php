@@ -24,13 +24,19 @@ Route::middleware(['auth', 'usuario'])->group(function () {
 
 });
 Route::controller(PublicacionController::class)->group(function () {
-
+    // Ruta para ver categoria
     Route::get('/categoria/{id}','verCategoria')->name('categoriaver');
+    // Ruta para crear publicaciones con un metodo llamado formularioCrearPublicacion que muestra el formulario
     Route::get('/publicaciones/{id}/crear', 'formularioCrear')->name('formularioCrearPublicacion');
+    // ruta para crear publicaciones con un metodo llamado crearPublicacion que procesa el formulario y guarda la publicacion en la base de datos
     Route::post('/publicaciones', 'crearPublicacion')->name('crearPublicacion');
+    // Ruta para editar publicaciones con un metodo llamado formularioEditarPublicacion que muestra el formulario de edicion
     Route::put('/publicaciones/{id}', 'editarPublicacion')->name('editarPublicacion');
+    // Ruta para eliminar publicaciones con un metodo llamado eliminarPublicacion que elimina la publicacion de la base de datos
     Route::delete('/publicaciones/{id}', 'eliminarPublicacion')->name('eliminarPublicacion');
+    // Ruta para ver una publicacion con un metodo llamado verPublicacion que muestra los detalles de la publicacion
     Route::get('/publicacion/{id}', 'verPublicacion')->name('verPublicacion');
+    // Ruta para ver mis publicaciones con un metodo llamado misPublicaciones que muestra las publicaciones creadas por el usuario autenticado
     Route::get('/mispublicaciones', 'misPublicaciones')->name('mispublicaciones');
 
 });

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publicacion extends Model
 {
+    // Especificar el nombre de la tabla asociada al modelo
+    // En este caso, se indica que la tabla se llama 'publicaciones'
        protected $table = 'publicaciones';
 
     protected $fillable = [
@@ -16,13 +18,13 @@ class Publicacion extends Model
         'categoria_id'
     ];
 
-    // RELACIÓN: usuario
+    // una publicación pertenece a un usuario y un usuario tiene muchas publicaciones
     public function usuario()
     {
         return $this->belongsTo(Usuarios::class, 'usuario_id');
     }
 
-    // RELACIÓN: categoría
+    // una publicación pertenece a una categoría y una categoría tiene muchas publicaciones
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');

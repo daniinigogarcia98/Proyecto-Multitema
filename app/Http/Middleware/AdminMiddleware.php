@@ -15,7 +15,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-              // Obtener el usuario autenticado
+        // Obtener el usuario autenticado
             $us = $request->user();
 
         // Verificar si el usuario no está autenticado o si su rol no es de administrador

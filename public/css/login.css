@@ -1,0 +1,9 @@
+    /* Ajustes responsive adicionales */
+    @media (max-width: 575px) {
+      .form-title-responsive {
+        font-size: 1.5rem;
+      }
+      .card-responsive {
+        padding: 1rem !important;
+      }
+    }

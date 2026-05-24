@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <title>ForoMultitema-Panel del Usuario</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- Bootstrap CSS v5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+</head>
+
+<body class="bg-body-secondary overflow-x-hidden">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+            <div class="container-fluid px-2 px-md-4">
+                <a class="navbar-brand" href="#"> <i class="fas fa-layer-group me-2"></i>ForoMultitema</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="container-fluid px-0">
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3 w-100">
+                            <!-- Grupo de Botones de Administración -->
+                            <div class="d-flex gap-2 flex-wrap justify-content-center justify-content-lg-start">
+                                <button class="btn btn-success btn-sm">
+                                    <a href="{{ route('mispublicaciones') }}" class="btn btn-success btn-sm">
+                                        <i class="fas fa-newspaper"></i>
+                                        <span class="d-none d-md-inline">Administar Publicaciones</span>
+                                    </a>
+                                </button>
+                                <button class="btn btn-warning btn-sm">
+                                    <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline">Bandeja
+                                        de Mensajes</span>
+                                </button>
+                            </div>
+
+                            <!-- Perfil y Cerrar Sesión (Derecha) -->
+                            <div
+                                class="ms-lg-auto d-flex align-items-center gap-2 gap-lg-3 justify-content-center justify-content-lg-end">
+                                <div class="ms-auto d-flex align-items-center gap-3">
+                                    <form action="{{ route('cerrar') }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-link nav-link text-danger">
+                                            <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                                        </button>
+                                    </form>
+                                    <div class="user-profile d-flex align-items-center gap-2">
+                                        <span class="fw-bold text-white d-inline-block text-truncate"
+                                            style="max-width: 150px;">
+                                            {{ Auth::user()?->nombre }}
+                                        </span>
+                                        <!-- Avatar Placeholder -->
+                                        <div class="avatar">
+                                            {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+    </header>
+
+    <main class="container-fluid px-0">
+        <div class="container px-3 px-md-4 px-lg-5 py-4 py-md-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 g-md-4 justify-content-center">
+
+                <!-- Card 1: Informática -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column p-3 p-md-4 p-lg-5 text-center">
+                            <div class="card-img mb-3">
+                                <i class="fas fa-laptop-code card-icon-responsive" style="font-size: 4.5rem;"></i>
+                            </div>
+                            <h5 class="card-title mb-3">Informática</h5>
+                            <p class="card-text small flex-grow-1">
+                                Espacio dedicado a soporte técnico especializado. Aquí podrás aportar tu granito de
+                                arena, buscar soluciones a problemas de código, configuraciones de sistemas operativos o
+                                contactar con otros usuarios para resolver incidencias técnicas.
+                            </p>
+                            <div class="mt-3">
+                                <a href="{{ route('categoriaver', 1) }}"
+                                    class="btn btn-outline-primary btn-sm w-100 w-md-auto">
+                                    <i class="fas fa-eye me-1"></i>Ver
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Temas Varios -->
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body d-flex flex-column p-3 p-md-4 p-lg-5 text-center">
+                            <div class="card-img mb-3">
+                                <i class="fas fa-tools card-icon-responsive" style="font-size: 4.5rem;"></i>
+                            </div>
+                            <h3 class="card-title mb-3 h5">Temas Varios</h3>
+                            <p class="card-text small flex-grow-1">
+                                Soluciones prácticas para la vida cotidiana. Desde cómo cambiar una bombilla hasta
+                                tutoriales específicos como el cambio del sensor de aparcamiento de un BMW. Un lugar
+                                para compartir conocimientos generales y bricolaje.
+                            </p>
+                            <div class="mt-3">
+                                <a href="{{ route('categoriaver', 2) }}"
+                                    class="btn btn-outline-success btn-sm w-100 w-md-auto">
+                                    <i class="fas fa-eye me-1"></i>Ver
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

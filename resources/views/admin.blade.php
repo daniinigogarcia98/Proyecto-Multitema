@@ -38,8 +38,9 @@
                                 </button>
                                 <button class="btn btn-success btn-sm">
                                     <a href="{{ route('mispublicaciones') }}" class="btn btn-success btn-sm">
-                                    <i class="fas fa-newspaper"></i> <span class="d-none d-md-inline">Administrar
-                                        Publicaciones</span>
+                                        <i class="fas fa-newspaper"></i> <span class="d-none d-md-inline">Administrar
+                                            Publicaciones</span>
+                                    </a>
                                 </button>
                                 <button class="btn btn-warning btn-sm">
                                     <i class="fas fa-envelope-open-text"></i> <span class="d-none d-md-inline">Bandeja

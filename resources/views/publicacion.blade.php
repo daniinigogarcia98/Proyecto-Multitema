@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}" />
 </head>
 
 <body class="bg-body-secondary overflow-x-hidden">
@@ -24,20 +24,23 @@
             <div
                 class="ms-lg-auto d-flex align-items-center gap-2 gap-lg-3 justify-content-center justify-content-lg-end">
                 <div class="ms-auto d-flex align-items-center gap-3">
-                    <form action="{{ route('cerrar') }}" method="post">
-                        @csrf
-                        <button class="btn btn-link nav-link text-danger">
-                            <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
-                        </button>
-                    </form>
-                    <div class="user-profile d-flex align-items-center gap-2">
-                        <span class="fw-bold text-white d-inline-block text-truncate" style="max-width: 150px;">
-                            {{ Auth::user()?->nombre }}
-                        </span>
-                        <!-- Avatar Placeholder -->
-                        <div class="avatar">
-                            {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
-                        </div>
+                    @auth
+                        <form action="{{ route('cerrar') }}" method="post">
+                            @csrf
+                            <button class="btn btn-link nav-link text-danger">
+                                <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                            </button>
+                        </form>
+                        <div class="user-profile d-flex align-items-center gap-2">
+                            <span class="fw-bold text-white d-inline-block text-truncate" style="max-width: 150px;">
+                                {{ Auth::user()?->nombre }}
+                            </span>
+                            <!-- Avatar Placeholder -->
+
+                            <div class="avatar">
+                                {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
+                            </div>
+                        @endauth
                     </div>
                 </div>
             </div>

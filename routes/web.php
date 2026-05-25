@@ -38,6 +38,8 @@ Route::controller(PublicacionController::class)->group(function () {
     Route::get('/publicacion/{id}', 'verPublicacion')->name('verPublicacion');
     // Ruta para ver mis publicaciones con un metodo llamado misPublicaciones que muestra las publicaciones creadas por el usuario autenticado
     Route::get('/mispublicaciones', 'misPublicaciones')->name('mispublicaciones');
+    // Ruta para guardar comentarios con un metodo llamado guardarComentario que procesa el formulario de comentario y guarda el comentario en la base de datos
+    Route::post('/publicacion/{id}/comentario', 'guardarComentario')->name('guardarcomentario');
 
 });
 // Administrar usuarios

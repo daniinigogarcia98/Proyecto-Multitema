@@ -40,7 +40,12 @@
                     @auth
 
                         <div class="d-flex align-items-center gap-3">
-
+                            <button class="btn btn-outline-white nav-link">
+                                <a href="{{ route('dashboard') }}"
+                                    class="text-decoration-none text-white">
+                                    <i class="fas fa-sign-out-alt me-1"></i> volver a la página principal
+                                </a>
+                            </button>
                             <!-- Cerrar sesión -->
                             <form action="{{ route('cerrar') }}" method="post">
                                 @csrf

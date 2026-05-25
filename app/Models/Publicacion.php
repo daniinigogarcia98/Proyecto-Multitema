@@ -3,6 +3,7 @@
 namespace App\Models;
 use App\Models\Usuarios;
 use App\Models\Categoria;
+use App\Models\Comentarios;
 use Illuminate\Database\Eloquent\Model;
 
 class Publicacion extends Model
@@ -28,5 +29,10 @@ class Publicacion extends Model
     public function categoria()
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentarios::class);
     }
 }

@@ -25,12 +25,18 @@
                 class="ms-lg-auto d-flex align-items-center gap-2 gap-lg-3 justify-content-center justify-content-lg-end">
                 <div class="ms-auto d-flex align-items-center gap-3">
                     @auth
+                        <button class="btn btn-outline-white nav-link">
+                            <a href="{{ route('categoriaver', $publicacion->categoria_id) }}" class="text-decoration-none text-white">
+                                <i class="fas fa-sign-out-alt me-1"></i> volver a la categoría
+                            </a>
+                        </button>
                         <form action="{{ route('cerrar') }}" method="post">
                             @csrf
                             <button class="btn btn-link nav-link text-danger">
                                 <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
                             </button>
                         </form>
+
                         <div class="user-profile d-flex align-items-center gap-2">
                             <span class="fw-bold text-white d-inline-block text-truncate" style="max-width: 150px;">
                                 {{ Auth::user()?->nombre }}
@@ -85,48 +91,54 @@
 
                 <div class="list-group mb-4 shadow-sm">
 
-                    <div class="list-group-item p-3">
-                        <div class="d-flex justify-content-between">
-                            <strong>Ana</strong>
-                            <small class="text-muted">Hace 1 día</small>
-                        </div>
-                        <p class="mb-0">
-                            Ejemplo de comentario (luego lo conectamos a BD).
-                        </p>
-                    </div>
+                    @forelse($publicacion->comentarios as $c)
+                        <div class="list-group-item p-3">
 
-                    <div class="list-group-item p-3">
-                        <div class="d-flex justify-content-between">
-                            <strong>Carlos</strong>
-                            <small class="text-muted">Hace 5 horas</small>
+                            <div class="d-flex justify-content-between">
+
+                                <strong>
+                                    {{ $c->usuario->nombre ?? 'Anónimo' }}
+                                </strong>
+
+                                <small class="text-muted">
+                                    {{ $c->created_at->diffForHumans() }}
+                                </small>
+
+                            </div>
+
+                            <p class="mb-0 mt-2">
+                                {{ $c->contenido }}
+                            </p>
+
                         </div>
-                        <p class="mb-0">
-                            Otro comentario de ejemplo.
-                        </p>
-                    </div>
+
+                    @empty
+
+                        <div class="list-group-item text-muted text-center p-3">
+                            No hay comentarios todavía.
+                        </div>
+                    @endforelse
 
                 </div>
 
-                <!-- FORM RESPUESTA (SIN FUNCIONALIDAD AÚN) -->
-                <div class="card shadow-sm">
-                    <div class="card-header bg-white">
-                        <h6 class="mb-0">Responder</h6>
+                <!-- FORMULARIO DE COMENTARIO -->
+                <form action="{{ route('guardarcomentario', $publicacion->id) }}" method="POST">
+
+                    @csrf
+
+                    <div class="mb-3">
+
+                        <textarea name="contenido" class="form-control" rows="3" placeholder="Escribe tu respuesta..." required></textarea>
+
                     </div>
 
-                    <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <textarea class="form-control" rows="3" placeholder="Escribe tu respuesta..." required></textarea>
-                            </div>
-
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">
-                                    Enviar Respuesta
-                                </button>
-                            </div>
-                        </form>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            Enviar Respuesta
+                        </button>
                     </div>
-                </div>
+
+                </form>
 
             </div>
         </div>

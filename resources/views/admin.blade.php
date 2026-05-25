@@ -94,11 +94,11 @@
                                 arena, buscar soluciones a problemas de código, configuraciones de sistemas operativos o
                                 contactar con otros usuarios para resolver incidencias técnicas.
                             </p>
-                            <div
-                                class="d-flex justify-content-between align-items-center mt-3 flex-wrap card-footer-responsive gap-2">
-                                <button class="btn btn-outline-primary btn-sm w-100 w-md-auto">
-                                    <i class="fas fa-cog me-1"></i> Gestionar Categoría
-                                </button>
+                            <div class="mt-3">
+                                <a href="{{ route('categoriaver', 1) }}"
+                                    class="btn btn-outline-primary btn-sm w-100 w-md-auto">
+                                    <i class="fas fa-eye me-1"></i>Ver
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -117,11 +117,11 @@
                                 tutoriales específicos como el cambio del sensor de aparcamiento de un BMW. Un lugar
                                 para compartir conocimientos generales y bricolaje.
                             </p>
-                            <div
-                                class="d-flex justify-content-between align-items-center mt-3 flex-wrap card-footer-responsive gap-2">
-                                <button class="btn btn-outline-success btn-sm w-100 w-md-auto">
-                                    <i class="fas fa-cog me-1"></i> Gestionar Categoría
-                                </button>
+                            <div class="mt-3">
+                                <a href="{{ route('categoriaver', 2) }}"
+                                    class="btn btn-outline-success btn-sm w-100 w-md-auto">
+                                    <i class="fas fa-eye me-1"></i>Ver
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,7 @@ Route::middleware(['auth', 'usuario'])->group(function () {
     })->name('dashboard');
 
 });
+// Rutas para gestionar publicaciones
 Route::controller(PublicacionController::class)->group(function () {
     // Ruta para ver categoria
     Route::get('/categoria/{id}','verCategoria')->name('categoriaver');
@@ -42,7 +43,6 @@ Route::controller(PublicacionController::class)->group(function () {
     Route::post('/publicacion/{id}/comentario', 'guardarComentario')->name('guardarcomentario');
 
 });
-// Administrar usuarios
 // Las rutas para administrar usuarios están protegidas por el middleware 'admin'.
 // Esto significa que solo los usuarios autenticados con el rol de administrador podrán acceder a estas rutas
 // Esto garantiza que solo los administradores puedan listar, actualizar y eliminar usuarios en la aplicación, mientras que los usuarios normales no tendrán acceso a estas funcionalidades de administración.

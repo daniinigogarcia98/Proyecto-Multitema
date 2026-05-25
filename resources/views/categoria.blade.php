@@ -19,89 +19,85 @@
         <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
             <div class="container-fluid px-3 px-md-4">
 
-                <!-- LOGO -->
-                <a class="navbar-brand" href="#">
-                    <i class="fas fa-layer-group me-2"></i>ForoMultitema
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold" href="{{ route('dashboard') }}">
+
+                    <i class="fas fa-layer-group me-2"></i>
+                    ForoMultitema
+
                 </a>
 
-                <!-- BOTÓN MOBILE -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                @auth
 
-                    <span class="navbar-toggler-icon"></span>
+                    <div class="ms-auto d-flex align-items-center gap-3">
 
-                </button>
+                        <!-- Volver -->
+                        <a href="{{ route('dashboard') }}"
+                            class="btn btn-outline-light btn-sm">
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                            Volver a la página principal
 
-                    <!-- ===================== -->
-                    <!-- USUARIO LOGUEADO -->
-                    <!-- ===================== -->
-                    @auth
+                        </a>
 
-                        <div class="d-flex align-items-center gap-3">
-                            <button class="btn btn-outline-white nav-link">
-                                <a href="{{ route('dashboard') }}"
-                                    class="text-decoration-none text-white">
-                                    <i class="fas fa-sign-out-alt me-1"></i> volver a la página principal
-                                </a>
-                            </button>
-                            <!-- Cerrar sesión -->
-                            <form action="{{ route('cerrar') }}" method="post">
-                                @csrf
+                        <!-- Usuario -->
+                        <div class="d-flex align-items-center gap-2">
 
-                                <button class="btn btn-link text-danger nav-link">
-                                    <i class="fas fa-sign-out-alt me-1"></i>
-                                    Cerrar sesión
-                                </button>
+                            <span class="fw-bold text-white">
+                                {{ Auth::user()->nombre }}
+                            </span>
 
-                            </form>
+                            <!-- Avatar -->
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="width:38px;height:38px;">
 
-                            <!-- Usuario -->
-                            <div class="d-flex align-items-center gap-2">
-
-                                <span class="fw-bold text-white">
-                                    {{ Auth::user()->nombre }}
-                                </span>
-
-                                <!-- Avatar -->
-                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center"
-                                    style="width:35px;height:35px;font-size:14px;">
-
-                                    {{ strtoupper(substr(Auth::user()->nombre, 0, 2)) }}
-
-                                </div>
+                                {{ strtoupper(substr(Auth::user()->nombre, 0, 2)) }}
 
                             </div>
 
                         </div>
 
-                    @endauth
+                        <!-- Logout -->
+                        <form action="{{ route('cerrar') }}" method="POST">
 
-                    <!-- ===================== -->
-                    <!-- INVITADO -->
-                    <!-- ===================== -->
-                    @guest
+                            @csrf
 
-                        <ul class="navbar-nav align-items-center gap-3">
+                            <button class="btn btn-outline-danger btn-sm">
 
-                            <li class="nav-item">
-                                <a class="btn btn-outline-light px-4" href="{{ route('login') }}">
-                                    Iniciar Sesión
-                                </a>
-                            </li>
+                                <i class="fas fa-sign-out-alt me-1"></i>
+                                Cerrar sesión
 
-                            <li class="nav-item">
-                                <a class="btn btn-success" href="{{ route('registro') }}">
-                                    Registrarse
-                                </a>
-                            </li>
+                            </button>
 
-                        </ul>
+                        </form>
 
-                    @endguest
+                    </div>
 
-                </div>
+                @endauth
+
+            </div> <!-- ===================== -->
+            <!-- INVITADO -->
+            <!-- ===================== -->
+            @guest
+
+                <ul class="navbar-nav align-items-center gap-3">
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light px-4" href="{{ route('login') }}">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-success" href="{{ route('registro') }}">
+                            Registrarse
+                        </a>
+                    </li>
+
+                </ul>
+
+            @endguest
+
+            </div>
             </div>
         </nav>
     </header>

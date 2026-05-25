@@ -15,41 +15,67 @@
 <body class="bg-body-secondary overflow-x-hidden">
 
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+
             <div class="container-fluid px-3 px-md-4">
-                <a class="navbar-brand" href="{{ route('categoriaver', $publicacion->categoria_id) }}">
-                    <i class="fas fa-layer-group me-2"></i>ForoMultitema
+
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold" href="{{ route('categoriaver', $publicacion->categoria_id) }}">
+
+                    <i class="fas fa-layer-group me-2"></i>
+                    ForoMultitema
+
                 </a>
-            </div>
-            <div
-                class="ms-lg-auto d-flex align-items-center gap-2 gap-lg-3 justify-content-center justify-content-lg-end">
-                <div class="ms-auto d-flex align-items-center gap-3">
-                    @auth
-                        <button class="btn btn-outline-white nav-link">
-                            <a href="{{ route('categoriaver', $publicacion->categoria_id) }}" class="text-decoration-none text-white">
-                                <i class="fas fa-sign-out-alt me-1"></i> volver a la categoría
-                            </a>
-                        </button>
-                        <form action="{{ route('cerrar') }}" method="post">
+
+                @auth
+
+                    <div class="ms-auto d-flex align-items-center gap-3">
+
+                        <!-- Volver -->
+                        <a href="{{ route('categoriaver', $publicacion->categoria_id) }}"
+                            class="btn btn-outline-light btn-sm">
+
+                            Volver a la categoría
+
+                        </a>
+
+                        <!-- Usuario -->
+                        <div class="d-flex align-items-center gap-2">
+
+                            <span class="fw-bold text-white">
+                                {{ Auth::user()->nombre }}
+                            </span>
+
+                            <!-- Avatar -->
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="width:38px;height:38px;">
+
+                                {{ strtoupper(substr(Auth::user()->nombre, 0, 2)) }}
+
+                            </div>
+
+                        </div>
+
+                        <!-- Logout -->
+                        <form action="{{ route('cerrar') }}" method="POST">
+
                             @csrf
-                            <button class="btn btn-link nav-link text-danger">
-                                <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+
+                            <button class="btn btn-outline-danger btn-sm">
+
+                                <i class="fas fa-sign-out-alt me-1"></i>
+                                Cerrar sesión
+
                             </button>
+
                         </form>
 
-                        <div class="user-profile d-flex align-items-center gap-2">
-                            <span class="fw-bold text-white d-inline-block text-truncate" style="max-width: 150px;">
-                                {{ Auth::user()?->nombre }}
-                            </span>
-                            <!-- Avatar Placeholder -->
-
-                            <div class="avatar">
-                                {{ strtoupper(substr(trim(Auth::user()->nombre), 0, 2)) }}
-                            </div>
-                        @endauth
                     </div>
-                </div>
+
+                @endauth
+
             </div>
+
         </nav>
     </header>
 

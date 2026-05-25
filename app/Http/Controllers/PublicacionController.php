@@ -34,6 +34,9 @@ class PublicacionController extends Controller
     // Este método recibe una solicitud POST con los datos de la nueva publicación, valida los datos,
     public function crearPublicacion(Request $res)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
         $res->validate([
             'titulo' => 'required',
             'contenido' => 'required',

@@ -46,8 +46,11 @@
                                 <div class="ms-auto d-flex align-items-center gap-3">
                                     <form action="{{ route('cerrar') }}" method="post">
                                         @csrf
-                                        <button class="btn btn-link nav-link text-danger">
-                                            <i class="fas fa-sign-out-alt me-1"></i> Cerrar Sesión
+                                        <button class="btn btn-outline-danger btn-sm">
+
+                                            <i class="fas fa-sign-out-alt me-1"></i>
+                                            Cerrar sesión
+
                                         </button>
                                     </form>
                                     <div class="user-profile d-flex align-items-center gap-2">

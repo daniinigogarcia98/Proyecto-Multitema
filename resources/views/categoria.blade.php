@@ -32,11 +32,19 @@
                     <div class="ms-auto d-flex align-items-center gap-3">
 
                         <!-- Volver -->
-                        <a href="{{ route('dashboard') }}"
-                            class="btn btn-outline-light btn-sm">
+                        {{-- si es admin --}}
+                        @if (Auth::user()->rol === 'A')
+                            <a href="{{ route('admin') }}"
+                                class="btn btn-outline-light btn-sm">
 
                             Volver a la página principal
+                        {{-- si es un usuario normal --}}
+                        @else
+                            <a href="{{ route('dashboard') }}"
+                                class="btn btn-outline-light btn-sm">
 
+                            Volver a la página principal
+                        @endif
                         </a>
 
                         <!-- Usuario -->

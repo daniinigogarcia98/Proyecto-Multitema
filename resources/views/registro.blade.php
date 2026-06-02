@@ -85,7 +85,7 @@
                             <!-- Enlace a inicio de sesión -->
                             <div class="text-center">
                                 <small class="text-muted">¿Ya tienes cuenta?</small><br />
-                                <a href="{{ route('inicio') }}" class="text-decoration-none fw-semibold">
+                                <a href="{{ route('login') }}" class="text-decoration-none fw-semibold">
                                     Iniciar sesión
                                 </a>
                             </div>

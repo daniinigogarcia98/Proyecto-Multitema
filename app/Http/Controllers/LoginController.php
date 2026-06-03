@@ -30,7 +30,7 @@ class LoginController
             'password' => 'required'
         ]);
         // Si la validación es exitosa, se procede a intentar iniciar sesión
-        //vericar si es un  usuario normal 
+        //vericar si es un  usuario normal o un admin
         try {
 
             if (Auth::attempt([

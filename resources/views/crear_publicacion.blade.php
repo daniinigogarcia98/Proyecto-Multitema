@@ -12,13 +12,87 @@
 <body class="bg-body-secondary overflow-x-hidden">
 
 <header>
-<nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
-    <div class="container-fluid px-2 px-md-4">
-        <a class="navbar-brand" href="#">
-            <i class="fas fa-layer-group me-2"></i>ForoMultitema
-        </a>
-    </div>
-</nav>
+        <nav class="navbar navbar-expand-lg bg-body-secondary" data-bs-theme="dark">
+            <div class="container-fluid px-3 px-md-4">
+
+                <!-- Logo -->
+                <a class="navbar-brand fw-bold" href="{{ route('dashboard') }}">
+
+                    <i class="fas fa-layer-group me-2"></i>
+                    ForoMultitema
+
+                </a>
+
+
+                    <div class="ms-auto d-flex align-items-center gap-3">
+
+                        <!-- Volver -->
+                            <a href="{{ route('categoriaver', $categoria->id) }}"
+                                class="btn btn-outline-light btn-sm">
+                            Volver a la categoría
+                        </a>
+
+                        <!-- Usuario -->
+                        <div class="d-flex align-items-center gap-2">
+
+                            <span class="fw-bold text-white">
+                                {{ Auth::user()->nombre }}
+                            </span>
+
+                            <!-- Avatar -->
+                            <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold"
+                                style="width:38px;height:38px;">
+
+                                {{ strtoupper(substr(Auth::user()->nombre, 0, 2)) }}
+
+                            </div>
+
+                        </div>
+
+                        <!-- Logout -->
+                        <form action="{{ route('cerrar') }}" method="POST">
+
+                            @csrf
+
+                            <button class="btn btn-outline-danger btn-sm">
+
+                                <i class="fas fa-sign-out-alt me-1"></i>
+                                Cerrar sesión
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+
+
+            </div> <!-- ===================== -->
+            <!-- INVITADO -->
+            <!-- ===================== -->
+            @guest
+
+                <ul class="navbar-nav align-items-center gap-3">
+
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light px-4" href="{{ route('login') }}">
+                            Iniciar Sesión
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="btn btn-success" href="{{ route('registro') }}">
+                            Registrarse
+                        </a>
+                    </li>
+
+                </ul>
+
+            @endguest
+
+            </div>
+            </div>
+        </nav>
 </header>
 
 <main class="container mt-4 mb-5">
